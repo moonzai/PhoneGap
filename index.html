@@ -13,15 +13,15 @@
 	}
 
 	function Getimage() {
-		navigator.camera.getPicture(onSuccess, onFail, {
+	/*	navigator.camera.getPicture(onSuccess, onFail, {
 			quality : 50,
 			destinationType : Camera.DestinationType.FILE_URI
-		});
+		}); */
 	}
 	function onSuccess(imageURI) {
-
+/*
 		var image = document.getElementById('myImage');
-		image.src = imageURI;
+		image.src = imageURI; */
 	}
 
 	function onFail(message) {
@@ -35,13 +35,13 @@
 
 	}
 	function getlocation() {
-		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	//	navigator.geolocation.getCurrentPosition(onSuccess, onError);
 	}
 
 	// onSuccess Geolocation
 	//
 	function onSuccess(position) {
-		var element = document.getElementById('geolocation');
+	/*	var element = document.getElementById('geolocation');
 		element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />'
 				+ 'Longitude: ' + position.coords.longitude + '<br />'
 				+ 'Altitude: ' + position.coords.altitude + '<br />'
@@ -49,7 +49,7 @@
 				+ 'Altitude Accuracy: ' + position.coords.altitudeAccuracy
 				+ '<br />' + 'Heading: ' + position.coords.heading + '<br />'
 				+ 'Speed: ' + position.coords.speed + '<br />' + 'Timestamp: '
-				+ position.timestamp + '<br />';
+				+ position.timestamp + '<br />'; */
 	}
 
 	// onError Callback receives a PositionError object
