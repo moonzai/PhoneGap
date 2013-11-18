@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<title>First App</title>
+<script type="text/javascript" src="cordova-2.7.0.js" charset="utf-8">
+	
+</script>
+
+<script type="text/javascript" charset="utf-8">
+	function onLoad() {
+		document.addEventListener("deviceready", deviceReady, false);
+	}
+
+	function Getimage() {
+		navigator.camera.getPicture(onSuccess, onFail, {
+			quality : 50,
+			destinationType : Camera.DestinationType.FILE_URI
+		});
+	}
+	function onSuccess(imageURI) {
+
+		var image = document.getElementById('myImage');
+		image.src = imageURI;
+	}
+
+	function onFail(message) {
+		alert('Failed because: ' + message);
+	}
+
+	function deviceReady() {
+		setInterval(function() {
+			getlocation();
+		}, 3000);
+
+	}
+	function getlocation() {
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	}
+
+	// onSuccess Geolocation
+	//
+	function onSuccess(position) {
+		var element = document.getElementById('geolocation');
+		element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />'
+				+ 'Longitude: ' + position.coords.longitude + '<br />'
+				+ 'Altitude: ' + position.coords.altitude + '<br />'
+				+ 'Accuracy: ' + position.coords.accuracy + '<br />'
+				+ 'Altitude Accuracy: ' + position.coords.altitudeAccuracy
+				+ '<br />' + 'Heading: ' + position.coords.heading + '<br />'
+				+ 'Speed: ' + position.coords.speed + '<br />' + 'Timestamp: '
+				+ position.timestamp + '<br />';
+	}
+
+	// onError Callback receives a PositionError object
+	//
+	function onError(error) {
+		alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+	}
+</script>
+</head>
+<body onload='onLoad()'>
+	<p id="geolocation">Finding geolocation...</p>
+
+	<a href='index1.html'>click</a>
+	<input type='button' value='Click' onclick='Getimage()'>
+	<img id='myImage' alt='' style='width: 60px; height: 60px;'>
+</body>
+</html>
+
